@@ -21,12 +21,28 @@ h6 {
     font-weight: 700;
 }
 
+.header {
+  background: black url("../img/header-30.jpg") no-repeat;
+  background-size: cover;
+  height: 90%;
+  color: white;
+  padding: 10% 0 0 10%;
+}
+
+.service.jumbotron {
+  margin-top: -50px;
+}
+
 .services {
   list-style: none;
 }
 
 .service-item {
   font-size: 24px;
+}
+
+span.shade {
+  background-color: rgba(0,0,0,.8)
 }
 
 footer {
