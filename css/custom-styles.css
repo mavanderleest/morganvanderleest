@@ -45,6 +45,10 @@ span.shade {
   background-color: rgba(0,0,0,.8)
 }
 
+.form-button {
+  display: inline-block;
+}
+
 footer {
     padding: 50px 0;
     background-color: #eee;
