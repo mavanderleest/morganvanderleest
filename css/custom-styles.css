@@ -29,8 +29,16 @@ h6 {
   padding: 10% 0 0 10%;
 }
 
+.service-header {
+  margin-top: -40px;
+}
+
 .service-body {
   text-align: center;
+}
+
+.service-body h3 {
+  text-decoration: underline;
 }
 
 .service.jumbotron {
@@ -40,10 +48,6 @@ h6 {
 .sub-service {
   font-size: 20px;
   font-weight: 100;
-}
-
-.service-body h3 {
-  text-decoration: underline;
 }
 
 span.shade {
