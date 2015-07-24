@@ -42,8 +42,6 @@
 
 <body>
 
-  <nav></nav>
-
   <div class="header">
     <div class="container">
       <div class="row">
@@ -56,10 +54,11 @@
       </div>
     </div>
   </div>
-  <br><br>
-
-  <div class="service-header jumbotron text-center">
-    <h2>How can I serve you?</h2>
+  
+  <div class="service-header text-center" id="service-header">
+    <div class="container">
+      <h2>How can I serve you?</h2>
+    </div>
   </div>
   <div class="service-body">
     <div class="container">
@@ -199,11 +198,16 @@
   </div>
   </footer>
 
+    <a href="mailto:morgan@morganvanderleest.com?subject=Let's%20get%20started!&body=Hi%20Morgan!" class="btn btn-success btn-lg" id="contact">Get started today!</a>
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/custom.js"></script>
 
     <!-- Google Analytics -->
     <script>

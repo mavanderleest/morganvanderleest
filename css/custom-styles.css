@@ -29,20 +29,12 @@ h6 {
   padding: 10% 0 0 10%;
 }
 
-.service-header {
-  margin-top: -40px;
-}
-
 .service-body {
   text-align: center;
 }
 
 .service-body h3 {
   text-decoration: underline;
-}
-
-.service.jumbotron {
-  margin-top: -50px;
 }
 
 .sub-service {
@@ -58,8 +50,8 @@ span.shade {
   display: inline-block;
 }
 
-footer {
-    padding: 50px 0;
+footer, .service-header {
+    padding: 20px 0;
     background-color: #eee;
 }
 
@@ -67,9 +59,29 @@ p.copyright {
     margin: 15px 0 0;
 }
 
+#contact {
+  position: absolute;
+  position: fixed;
+  bottom: 1%;
+  right: 26%;
+}
+
 @media (min-width: 768px) {
   .service-body {
     text-align: left;
+  }
+}
+
+@media (min-width: 420px) {
+  #contact {
+    right: 1%;
+  }
+}
+
+@media (max-height: 460px) {
+  .header h1,
+  .header h2 {
+    font-size: 18px;
   }
 }
 
