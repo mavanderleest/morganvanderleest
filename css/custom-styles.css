@@ -78,7 +78,7 @@ p.copyright {
   }
 }
 
-@media (max-height: 460px) {
+@media (max-height: 550px) {
   .header h1,
   .header h2 {
     font-size: 18px;
