@@ -1,0 +1,163 @@
+body {
+    background-color: black;
+} 
+
+a:link {
+    color: #FF0000;
+}
+
+a:visited {
+    color: #FF0000;
+}
+
+a:active {
+     color: #FF0000;
+}
+
+.boldtable, .boldtable TD, .boldtable TH
+{
+font-size:11pt;
+}
+
+#sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	width: auto;
+	list-style: none;
+	float: left;
+	font: bold 12px arial}
+
+#sddm li a
+{	display: block;
+	margin: 0 1px 0 0;
+	padding: 4px 10px;
+	width: 60px;
+	background: #333333;
+	color: #FF0000;
+	text-align: center;
+	text-decoration: none}
+
+#sddm li a:hover
+{	background: #49A3FF}
+
+#sddm div
+{	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF;
+	border: 1px solid #5970B2
+}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: auto;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #FFFFFF;
+		color: #FF0000;
+		font: 12px arial
+	}
+
+	#sddm div a:hover
+	{	background: #49A3FF;
+		color: #FFF
+	}
+
+.tfadata
+	{
+		height: 16px;
+	}	
+	
+div.popupPanel{
+	position: relative;
+	display: inline;
+	cursor:pointer;
+}
+
+div.popupPanel div{
+	cursor:default;
+	padding-top: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	background: #FAF8CB;
+	border-radius: 4px;
+	box-shadow: 5px 5px 5px #888888;
+	position: absolute;
+	display: none;
+	z-index:50;
+	left: -9999px;
+}
+
+font.notify{
+	font-size:11px;
+	height:13px;
+	width:13px;
+	text-align:center;
+	vertical-align:middle;
+	display: inline-block;
+	border-radius:50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	z-index:10;
+	position:relative;
+	top:-4px;
+	left:-4px;
+	background-color:red;
+	color:white;
+}
+
+#selection {
+	color: white;
+}
+
+.menu {
+	color: black;
+}
+
+.menu .row h3,
+.menu .row p
+ {
+	color: white;
+}
+
+.panel-title span {
+	color: black;
+}
+
+.client-div {
+	display: inline-block;
+}
+
+.sum-title {
+	background-color: #C0C0C0;
+}
+
+.client {
+	background-color: #C0C0C0;
+	display: inline-block;
+	padding: 5px;
+	margin: 1px;
+	border-radius: 5%;
+}
+
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer div div {
+	margin-top: 10px;
+}

@@ -1,0 +1,371 @@
+
+	
+<html>
+<head>
+<title>Coiled Tubing Supplier</title>
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script type="text/javascript"> 
+
+var timeout	= 500;
+var closetimer	= 0;
+var ddmenuitem	= 0;
+
+// open hidden layer
+function mopen(id)
+{	
+	
+	// cancel close timer
+	mcancelclosetime();
+
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+	
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+
+}
+
+
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose; 
+</script><script type="text/javascript"> 
+
+	function StartHeaderFuncs()
+	{
+		CheckNotifications();
+		UpdateSMS();
+	}
+		
+	function CheckNotifications()
+	{ 
+		var suppress = document.getElementById("suppressNotifications");
+		if (suppress.value==0)
+		{
+			var xmlHttp = null;
+			xmlHttp=GetXmlHttpObjectSMS()
+			if (xmlHttp==null)
+			{
+				alert ("Browser does not support HTTP Request")
+				return
+			}
+					
+			var url="header_notifications.php"		
+			url=url+"?sid="+Math.random()
+			xmlHttp.onreadystatechange=
+			function () 
+			{ 
+			if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+			 { 
+			 document.getElementById("HeaderAlerts").innerHTML=xmlHttp.responseText 
+			 } 
+			}
+
+			xmlHttp.open("GET",url,true)
+			xmlHttp.send(null)
+		}
+		setTimeout("CheckNotifications()", 8000);
+	}	
+	
+	function UpdateSMS()
+	{ 
+		var xmlHttp = null;
+		xmlHttp=GetXmlHttpObjectSMS()
+		if (xmlHttp==null)
+		{
+			alert ("Browser does not support HTTP Request")
+			return
+		}
+		
+		x = document.getElementById('recentsms');
+
+		var url="sms_update.php" 	
+		url=url+"?sid="+Math.random()
+
+		xmlHttp.open("GET",url,true)
+		xmlHttp.onreadystatechange=
+		function () 
+		{ 
+			if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+			{ 
+				x.innerHTML=xmlHttp.responseText;
+			} 
+		}
+		xmlHttp.send(null)
+		
+		setTimeout("UpdateSMS()", 30000);
+	}
+
+	function GetXmlHttpObjectSMS()
+	{
+		var xmlHttp=null;
+		try
+		{
+			xmlHttp=new XMLHttpRequest();
+		}
+		catch (e)
+		{
+			try
+			{
+				xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+			}
+			catch (e)
+			{
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		}
+		return xmlHttp;
+	}	
+	
+	function popupToggle(span_id, show, loc) 
+	{
+		//var spanObj = document.getElementById(span_id);
+		//toggle the panel
+		if (show==1 && span_id.style.display == 'none') 
+		{	
+			//hide any other open panels
+			var contentObjs = document.getElementsByClassName("popupContent");
+			for (var i=0; i<contentObjs.length;i++)
+			{
+				if (contentObjs[i].id != span_id.id)
+				{
+					contentObjs[i].style.display = 'none';
+					contentObjs[i].style.left = '-9999px';							
+				}
+			}
+			//if the panel is not currently visible...load the content
+			var xmlHttp = null;
+			xmlHttp=GetXmlHttpObjectSMS()
+			if (xmlHttp==null)
+			{
+				alert ("Browser does not support HTTP Request")
+				return
+			}
+			var url="header_alerts.php";
+			if(span_id.id == 'fieldpopup'){url="header_fieldalerts.php";}
+			if(span_id.id == 'maintenancepopup'){url="header_maintenancealerts.php";}
+			url=url+"?sid="+Math.random()
+			xmlHttp.onreadystatechange=
+			function () 
+			{ 
+				if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+				{ 
+					span_id.innerHTML=xmlHttp.responseText 
+				} 
+			}
+			xmlHttp.open("GET",url,true)
+			xmlHttp.send(null)			
+			//now show the panel
+			span_id.style.display = 'block';
+			span_id.style.left = loc+'px';		
+			var suppress = document.getElementById("suppressNotifications");
+			suppress.value=1;
+		}
+		else 
+		{
+			span_id.style.display = 'none';
+			span_id.style.left = '-9999px';		
+			var suppress = document.getElementById("suppressNotifications");
+			suppress.value=0;
+		}
+	}	
+</script>
+
+<link rel='stylesheet' type='text/css' href='ctfatigue.css?v=2.1'>
+<link rel="stylesheet" type="text/css" href="ctfatigue.css">
+
+</head>
+<body onload='StartHeaderFuncs();'>
+<div class="container">
+	<div class="row">
+		<div class="pull-left"><img src='http://www.ctfatigue.com/graphics/CoilData_logo.png'></div>
+		<div class="pull-right"><img height=58 src='http://www.ctfatigue.com/graphics/Tenaris_logo.gif'></div>
+	</div>
+	<div class="row">
+		<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="string_supplier.php">Home</a></li>
+				<li><a href="coildata.php">CoilData</a></li>
+				<li><a href="string_service.php">Service</a></li>
+				<li><a href="string_replace.php">Replace</a></li>
+				<li><a href="string_replace3.php">Inventory</a></li>
+				<li><a href="string_order.php">Orders</a></li>
+				<li><a href='admin.php' onmouseover='mopen("m7")' onmouseout='mclosetime()'>Setup</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="pull-right"><a href='index2.php'>Logout</a></li>
+			</ul>
+		</div>
+		</nav>
+	</div>
+</div>
+<div class="container">
+<!-- <p class="text-center" id="selection">Select which task you wish to perform.</p> -->
+<form action='string_supplier.php' method='get'>
+	<div class="menu">
+		<div class="row">
+			<h3 class="text-center">Aradia Coiled Tubing</h3>
+			<p class="text-center">Web interface for pipe vendors and third party service providers</p>
+		</div>
+
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href='coildata.php'>CoilData</a></h3>
+				</div>
+				<div class="panel-body">
+					Upload documents to the customer account as part of the string record. Weld certificates, pipe inspections and pressure tests.
+				</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href='string_service.php'>Service Work</a></h3>
+				</div>
+				<div class="panel-body">
+					View and edit service history for a customer string. Record shipping and handling events.
+				</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href='string_replace.php'>Replacement Strings</a></h3>
+				</div>
+				<div class="panel-body">
+					View customer strings with high fatigue. Propose replacement strings with the same and/or similar properties.
+				</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href='string_replace3.php'>Inventory Strings</a></h3>
+				</div>
+				<div class="panel-body">
+					View and edit strings currently posted as being available in inventory. Strings posted here are visible to all customers.
+				</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href='string_order.php'>Strings on Order</a></h3>
+				</div>
+				<div class="panel-body">
+					View and edit strings which the customer has posted as being on order. Update the string status and estimated delivery date.
+				</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href="#">Fatigue Modeling</a> <span>(future feature)</span></h3>
+				</div>
+				<div class="panel-body">
+					Customize the Aradia fatigue model to reflect your pipe performance expectations.
+				</div>
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href="#">Advertising</a> <span>(future feature)</span></h3>
+				</div>
+				<div class="panel-body">
+					Configure advertising for your company on the Aradia website.
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+
+<div class="container">
+	<div class="row">
+	The following statistics indicate the current website activity level.
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<font color=red size=+1>Recent Client Logins</font>
+			</div>
+			<div class="panel-body">
+				Current number of clients = 29
+			</div>
+			<div class="client-table">
+				<div class="client-div text-center col-sm-2">
+					<div class="sum-title">
+						Yesterday<br>(total)
+					</div>
+					<div class="sum-total">258</div>
+				</div>
+				<div class="client-div text-center col-sm-2">
+					<div class="sum-title">
+						Today<br>(total)
+					</div>
+					<div class="sum-total">113</div>
+				</div>
+				<div class="client-div text-center col-sm-2">
+					<div class="sum-title">
+						7 Days<br>(total)
+					</div>
+					<div class="sum-total">616</div>
+				</div>
+				<div class="client-div text-center col-sm-2">
+					<div class="sum-title">
+						7 Days<br>(unique)
+					</div>
+					<div class="sum-total">150</div>
+				</div>
+				<div class="client-div text-center col-sm-2">
+					<div class="sum-title">
+						30 Days<br>(total)
+					</div>
+					<div class="sum-total">3216</div>
+				</div>
+				<div class="client-div text-center col-sm-2">
+					<div class="sum-title">
+						30 Days<br>(unique)
+					</div>
+					<div class="sum-total">242</div>
+				</div>
+			</div>
+			<div class="text-center">
+				Total = includes duplicates; Unique = counts each person only once
+				<br>Unique visit 30 day benchmarks: Jan 2011=39; 2012=79; 2013=147; 2014=198
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<font color=red size=+1>Aradia Clients</font>
+			<p>In alphabetical order</p>
+		</div>
+		<div class="panel-body">
+			Note: the client has control over the visibility of their data to suppliers<br>
+			<div class="client">CTSolutions</div><div class="client"><font color='grey'>Calfrac*</font></div><div class="client"><font color='grey'>CalfracUS*</font></div><div class="client">Canyon</div><div class="client">Conquest</div><div class="client">Cretic</div><div class="client"><font color='grey'>Key Energy*</font></div><div class="client"><font color='grey'>Essential*</font></div><div class="client">Forbes</div><div class="client">IPS</div><div class="client">Legend</div><div class="client">Precision</div><div class="client">ProPetro</div><div class="client">RedBack</div><div class="client">RedZone</div><div class="client">STEP</div><div class="client">Sabre</div><div class="client"><font color='grey'>Sanjel*</font></div><div class="client"><font color='grey'>SanjelUS*</font></div><div class="client">TorquedUp</div><div class="client"><font color='grey'>Trican*</font></div><div class="client">TricanRussia</div><div class="client">TricanUS</div><div class="client">Tucker</div><div class="client">Weatherford</div>
+			<div><br>Provisional (trial) customers:</div>
+			<div class="client"><font color='grey'>CJEnergy*</font></div><div class="client">Pioneer</div><div class="client">Viking</div><div class="client">Xtreme</div>
+		</div>
+	<div class="panel-footer">
+		* feature disabled by client
+	</div>
+	</div>
+</div>
+</div>
+
+<footer class="footer">
+	<div class="container">
+	<div class="row">
+		<div class="pull-left">Morgan VanDerLeest of Tenaris</div>
+		<div class="pull-right">August 2015 &copy <a href='http://www.CoilData.com'>CoilData</a></div>
+	</div>
+	</div>
+</footer>
+</html>
