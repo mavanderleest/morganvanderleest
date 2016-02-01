@@ -1,0 +1,135 @@
+@import "reset";
+@import "../bourbon/bourbon";
+@import "../neat/neat";
+
+$header-text: white;
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+header:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-image: url(../images/kclf-header.jpg);
+  background-size: cover;
+  background-position: -160px 0px, center;
+  height: 100%;
+/*  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  margin: -10px; */
+}
+
+header {
+  background-color: rgba(grey, 0.5);
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: $header-text;
+  nav {
+    padding-top: 50px;
+    a {
+//      display: inline-block;
+      display: none;
+      text-decoration: none;
+      margin: 1em;
+      color: $header-text;
+    }
+    @include clearfix;
+    margin-bottom: 25px;
+  }
+  div p span {
+    font-size: 1.4em;
+  }
+  :nth-child(2) img {
+    width: 250px;
+    height: auto;
+    margin: -50px;
+  }
+  :nth-child(5) {
+    a {
+      text-decoration: none;
+      color: $header-text;
+      position: fixed;
+      bottom: 25px;
+    }
+    :first-child {
+      left: 25px;
+      fill: $header-text;
+    }
+    :nth-child(2) {
+      right: 25px;
+      fill: $header-text;
+    }
+  }
+}
+
+#header1 {
+  font-size: 39px;
+  text-transform: uppercase;
+}
+#header2 {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+#header3 {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+#header4 {
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 681px) {
+  header:before {
+    background-position: center;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  header {
+    nav {
+      span {
+        float: right;
+        margin-right: 100px;
+      }
+      :first-child {
+        float: left;
+        margin-left: 100px;
+      }
+    }
+    :nth-child(5) {
+    a {
+      bottom: 50px;
+    }
+    :first-child {
+      left: 100px;
+    }
+    :nth-child(2) {
+      right: 100px;
+    }
+  }
+  } 
+}
